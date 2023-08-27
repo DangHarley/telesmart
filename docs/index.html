@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeleSmart</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        box-sizing: border-box;
+        user-select: none;
+      }
+      header::before {
+        background: url("https://cdn.dribbble.com/users/1659456/screenshots/4830780/smart-tv-concept-part1.gif")
+          no-repeat center center/cover;
+        content: "";
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        top: 0px;
+        height: 590px;
+        z-index: -1;
+        opacity: 0.8;
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        font-size: 1.2rem;
+        font-weight: bold;
+        flex-wrap: wrap;
+      }
+      img {
+        width: 65px;
+        height: 65px;
+        margin: 0px 8px;
+        margin-top: 15px;
+      }
+      #navTelevision {
+        margin-top: 15px;
+      }
+      @media (max-width: 350px) {
+        .navbar {
+          font-size: 1.2rem;
+        }
+        #navTelevision {
+          margin-top: 35px;
+        }
+      }
+
+      #intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+        height: 700px;
+      }
+      .basic-intro {
+        font-size: 2rem;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+      }
+      #basic-intro1 {
+        color: #1a1949;
+        font-size: 1.3rem;
+        font-weight: 550;
+      }
+      .about {
+        position: absolute;
+        top: 600px;
+        color: #000000;
+      }
+      .about > p {
+        width: 90%;
+        margin: auto;
+        font-weight: bold;
+        color: #ece7e7;
+        
+      }
+      .about p {
+        text-align: justify;
+                align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+               background-color: rgb(44, 39, 39);
+                       border-radius: 22px;
+        transition-property: all;
+                  no-repeat center center/cover;
+        opacity: 0.4;
+      }
+      .introcard {
+        width: 98%;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        text-align: center;
+        background-color: rgb(0, 255, 157);
+        border-radius: 30px;
+        transition-property: all;
+        transition-duration: 3s;
+        transition-delay: 0.9s;
+        box-sizing: border-box;
+        opacity: 0.8;
+      }
+      .icard:hover {
+        transform: scale(1.12);
+        box-shadow: 10px 8px 15px rgb(243, 147, 147);
+      }
+      .icard {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 25px;
+        border-radius: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .icard-img > img {
+        width: 150px;
+        height: 150px;
+        display: block;
+        margin: auto;
+        border-radius: 25px;
+      }
+      .icardtext {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      @media (max-width: 300px) {
+        .icardtext {
+          font-size: 20px;
+        }
+      }
+      .LuxuryTvs {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        background-color: rgb(43, 42, 42);
+        color: white;
+      }
+      .pay {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        background-color: rgb(0, 241, 201);
+        padding: 17px;
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+      }
+      .paisa {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-size: 30px;
+      }
+      #amtbtn {
+        background-color: rgb(0, 241, 201);
+        border: none;
+        color: white;
+      }
+      .topay {
+        border-radius: 15px;
+        border: none;
+        background-color: black;
+        color: white;
+      }
+      .topay:hover {
+        font-size: 25px;
+        background-color: rgb(0, 255, 242);
+      }
+      .p {
+        cursor: pointer;
+      }
+      .m {
+        cursor: pointer;
+      }
+      .p:hover {
+        color: white;
+      }
+      .m:hover {
+        color: white;
+      }
+      .Television {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .maincard {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 25px;
+        transition-property: all;
+        border: 2px solid red;
+        border-radius: 15px;
+        background-color: white;
+        text-align: center;
+        color: black;
+        cursor: pointer;
+        transition-duration: 0.9s;
+        font-family: "Montserrat", 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+      .maincard:hover {
+        transform: scale(1.1);
+        box-shadow: 4px 8px 12px white;
+        background-color: black;
+        color: white;
+        border: 2px solid white;
+      }
+      .maincard-img {
+        padding: 4px;
+      }
+      .maincard-img > img {
+        width: 250px;
+        height: 250px;
+        display: block;
+        margin: auto;
+        border-radius: 25px;
+        text-align: center;
+      }
+      .middle {
+        margin: 70px 0px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        background-color: rgb(255, 255, 255);
+      }
+      .mcard {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        text-align: justify;
+      }
+      .mcard-img > img {
+        width: 182px;
+        height: 181px;
+        display: block;
+        margin: auto;
+        border-radius: 25px;
+        text-align: center;
+      }
+      .mcardtext {
+        text-align: center;
+      }
+      .mcardp {
+        font-weight: bold;
+      }
+      .mbutton {
+        background-color: rgb(0, 247, 255);
+        color: white;
+        border: none;
+        width: 200px;
+        height: 40px;
+        border-radius: 12px;
+        margin: 7px 0px;
+      }
+      .cardh4 {
+        transition-property: all;
+        transition-duration: 0.5s;
+      }
+      .cardh4:hover {
+        font-size: 30px;
+      }
+      .endcontainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+      .endimg {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .notification {
+        z-index: 100 !important;
+        position: fixed !important;
+        margin-top: 5%;
+        width: 22%;
+      }
+      .balance {
+        font-size: 1rem !important;
+        color: black !important;
+      }
+      .sold {
+        z-index: 100 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- navigation bar -->
+    <header>
+      <div class="navbar">
+        <div id="navTelevision">
+          <img src="https://www.linkpicture.com/q/865440.png" alt="" />
+          <p>TELESmart</p>
+        </div>
+        <div>
+          <span
+            class="nav-link border rounded-pill bg-light balance"
+            style="margin-right: 0 !important"
+          >
+            <span id="balance">0</span>
+            CELO
+          </span>
+        </div>
+      </div>
+
+      <div
+        class="alert alert-warning sticky-top mt-2 notification"
+        role="alert"
+      >
+        <span id="notification">⌛ Loading...</span>
+      </div>
+    </header>
+    <div id="intro" style="height: 700px">
+      <div class="basic-intro">Smart Tv with Ultra Quality,</div>
+      <div class="basic-intro">720p HD 4K 8k</div>
+            <div class="basic-intro">with next level audios and your Tv AI</div>
+      <div id="basic-intro1">Order Now at affordable prices</div>
+      <div class="mb-4" style="margin-top: 4em">
+        <a
+          class="btn btn-dark rounded-pill"
+          data-bs-toggle="modal"
+          data-bs-target="#addModal"
+        >
+          Add New Smart TV
+        </a>
+      </div>
+      <div class="about">
+        <h1>ABOUT US</h1>
+        <p>
+Welcome to [TeleSmart]!
+
+At [TeleSmart], we are passionate about bringing you an unparalleled shopping experience right from the comfort of your living room. Our mission is to provide you with a curated selection of the latest and greatest television products, all in one convenient online destination.
+
+Who We Are:
+
+We are a team of tech enthusiasts and entertainment aficionados who understand the pivotal role that televisions play in modern households. With years of experience in the industry, we have carefully crafted a platform that caters to your diverse TV needs. Whether you're an avid gamer seeking high refresh rates, a movie buff chasing cinematic experiences, or simply looking for a reliable TV upgrade, we've got you covered.
+        </p>
+      </div>
+    </div>
+    <div class="introcard" id="intca">
+      <div class="icard">
+        <div class="icard-img">
+          <img src="data:image/jpeg;base64,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" alt="" />
+        </div>
+        <div class="icardtext">Plasma TVs</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img">
+          <img src="https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/00/6965311/1.jpg?8525" alt="" />
+        </div>
+
+        <div class="icardtext">Curved Screen</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/41uhsjVEApL.jpghttps://i.postimg.cc/qBzGqH0j/icard3.jpg" alt="" />
+        </div>
+        <div class="icardtext">Dual Tvs</div>
+      </div>
+      <div class="icard">
+        <div class="icard-img">
+          <img
+            src="https://www.yankodesign.com/images/design_news/2021/03/this-165-inch-folding-television-disappears-right-into-the-ground-when-you-turn-it-off/cseed_m1_folding_television_1.jpg"
+            alt=""
+          />
+        </div>
+        <div class="icardtext">Foldable TVs</div>
+        </div>
+      <div class="icard">
+        <div class="icard-img">
+          <img
+            src="https://www.u-buy.com.ng/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNjF6RHI5TGFYMEwuX0FDX1NMMTIwMF8uanBn.jpg"
+            alt=""
+          />
+        </div>
+        <div class="icardtext">Portable TVs</div>
+        </div>
+      <div class="icard">
+        <div class="icard-img">
+          <img
+            src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6504/6504997_sd.jpg;maxHeight=250;maxWidth=380"
+            alt=""
+          />
+        </div>
+        <div class="icardtext">H2O Resistant</div>
+        </div>
+      <div class="icard">
+        <div class="icard-img">
+          <img
+            src="https://robbreport.com/wp-content/uploads/2019/05/mg_2013-e1558012384380.jpg"
+            alt=""
+          />
+        </div>
+        <div class="icardtext">Retractable</div>
+        
+      </div>
+    </div>
+    <div class="collbtn" id="explore" style="margin-top: 40px">
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#menuBar"
+        aria-expanded="false"
+        aria-controls="menuBar"
+        style="text-align: center; display: block; margin: 10px auto"
+      >
+        check our offers
+      </button>
+    </div>
+    <div class="collapse" id="menuBar">
+      <div class="LuxuryTvs">
+        <div class="pay">
+          <div class="paisa">
+            Total is &nbsp;
+            <span id="amtbtn">0.00</span> &nbsp;CELO
+          </div>
+          <button id="payBtn" class="topay rounded-pill">Pay Now</button>
+        </div>
+        <div class="menu" id="menu"></div>
+      </div>
+    </div>
+    <div class="middle">
+      <div class="mcard">
+        <div class="mcard-img">
+          <img
+            src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt=""
+          />
+        </div>
+        <div class="mcardtext">
+          <h4 class="cardh4">Danny Evans</h4>
+          <p class="mcardp">
+            This is the best Tv Mart,<br />
+            I have ever seen
+          </p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img">
+          <img
+                      src="https://i.pinimg.com/564x/f4/9c/2c/f49c2c5054772ed87c4cdd28db9ff354.jpg"
+            alt=""
+          />
+        </div>
+        <div class="mcardtext">
+          <h4 class="cardh4">Frank Water</h4>
+          <p class="mcardp">
+            They offer Tvs<br />at the best affordable prices
+          </p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img">
+          <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6nofeFZqVKlUr6DiQ7mu4v7X3WdprTUPe1Q&usqp=CAU"
+            alt=""
+          />
+        </div>
+        <div class="mcardtext">
+          <h4 class="cardh4">Ben Tummy</h4>
+          <p class="mcardp">
+            Best quality Tv<br />I have ever seen
+          </p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img">
+          <img
+            src="https://38.media.tumblr.com/100d5d2fcae39a13939c646413b5e607/tumblr_nhxgzm3tor1qgwu2so1_1280.gif"
+            alt=""
+          />
+        </div>
+        <div class="mcardtext">
+          <h4 class="cardh4">Owen Damin</h4>
+          <p class="mcardp">
+            urggggh!! I just<br />can't get enough of their offers
+          </p>
+        </div>
+      </div>
+      <div class="mcard">
+        <div class="mcard-img">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135823.png"
+            alt=""
+          />
+        </div>
+        <div class="mcardtext">
+          <h4 class="cardh4">Lexi Hush</h4>
+          <p class="mcardp">
+            They have the best deals<br />with great quality
+                <div class="mcard">
+        <div class="mcard-img">
+          </p>
+        </div>
+                <details>made with Heart by Dang.H</details>
+      </div>
+    </div>
+    <!--Modal-->
+    <div
+      class="modal fade"
+      id="addModal"
+      tabindex="-1"
+      aria-labelledby="newTelevisionModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newTelevisionModalLabel">New Television</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="col">
+                  <input
+                    type="text"
+                    id="newTelevisionName"
+                    class="form-control mb-2"
+                    placeholder="Enter name of Television"
+                  />
+                </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    id="newImgUrl"
+                    class="form-control mb-2"
+                    placeholder="Enter image url"
+                  />
+                </div>
+                <div class="col">
+                  <input
+                    type="text"
+                    id="newPrice"
+                    class="form-control mb-2"
+                    placeholder="Enter price"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-light border"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-dark"
+              data-bs-dismiss="modal"
+              id="newTelevisionBtn"
+            >
+              Add Television
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/Modal-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+  <script type="text/javascript" src="main.js"></script></body>
+</html>
