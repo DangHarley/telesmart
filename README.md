@@ -1,15 +1,30 @@
-# FOODIZ DELIVERY IS A WEB3 MEAL ADDER,ORDER AND PAYMENT DAPP
-I came up with the submission for dacade.org for celo 101 development 
-# fuctions include :
-Add food 
-order  from cart
-pay using celo
-track delivery by order referance number
+# Welcome to TELESMART - Your Ultimate TV Shopping Destination! 📺
+This is a Television Dapp that allow users buy Tvs. 
 
 # Demo link 
-Go to [TeleSmart-Dapp](https://francessnewdev.github.io/foodiz-deliverycelo101/)
+Go to [TeleSmart-Dapp](https://dangharley.github.io/telesmart/)
+At TeleSmart, we're not just a TV store – we're your tech-savvy companions on your journey to find the ideal television. Our mission is to provide you with a seamless shopping experience, expert advice, and a wide range of options to suit every budget.
 
-# Alternatively this can serve as a decentralize food market that fosters the usage of crypto in everyday life through the purchase of food
+## Why Choose TVZone?
+
+- 🖥️ **Vast Selection:** Choose from a diverse range of televisions, catering to various preferences and price points.
+- 📺 **Expert Guidance:** Our knowledgeable staff is here to guide you through your choices, ensuring you find the TV that fits your needs.
+- 🔍 **Product Insights:** In-depth product descriptions and specifications help you make an informed decision.
+- 🛒 **Easy Shopping:** Our user-friendly website makes browsing, comparing, and purchasing TVs a breeze.
+- 🚚 **Fast Delivery:** Enjoy prompt and secure delivery to your doorstep.
+- 💡 **Latest Technology:** Stay at the forefront of TV innovation with our collection of cutting-edge models.
+I came up with the submission for dacade.org for celo 101 development 
+## Featured Categories
+
+- 📺 **4K and 8K TVs:** Immerse yourself in stunning detail with our range of high-resolution televisions.
+- 🖼️ **OLED and QLED TVs:** Experience vibrant colors and deep contrasts for a cinematic viewing experience.
+- 📡 **Smart TVs:** Connect to a world of entertainment with our smart TV selection.
+
+
+Pay with Celo Wallet
+
+# Demo link 
+Go to [TeleSmart-Dapp](https://dangharley.github.io/telesmart/)
 
 
 
@@ -28,7 +43,7 @@ or
 
 ```
 
-yarn install
+yarn in
 
 ```
 
