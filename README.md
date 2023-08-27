@@ -3,6 +3,8 @@ This is a Television Dapp that allow users buy Tvs.
 
 # Demo link 
 Go to [TeleSmart-Dapp](https://dangharley.github.io/telesmart/)
+
+##About
 At TeleSmart, we're not just a TV store – we're your tech-savvy companions on your journey to find the ideal television. Our mission is to provide you with a seamless shopping experience, expert advice, and a wide range of options to suit every budget.
 
 ## Why Choose TVZone?
