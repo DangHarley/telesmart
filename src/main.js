@@ -14,18 +14,23 @@ let kit;
 
 class Order {
   constructor(televisionId, count) {
-    this.televisiond = televisionId;
+    this.televisionId = televisionId;
     this.count = count;
   }
 }
 
+const alertElement = document.querySelector(".alert");
+const notificationElement = document.querySelector("#notification");
+const balanceElement = document.querySelector("#balance");
+const menuElement = document.getElementById("menu");
+
 function notification(_text) {
-  document.querySelector(".alert").style.display = "block";
-  document.querySelector("#notification").textContent = _text;
+  alertElement.style.display = "block";
+  notificationElement.textContent = _text;
 }
 
 function notificationOff() {
-  document.querySelector(".alert").style.display = "none";
+  alertElement.style.display = "none";
 }
 
 const getUser = async function () {
@@ -64,7 +69,7 @@ const getBalance = async function () {
   notification("⌛ Getting Balance...");
   const totalBalance = await kit.getTotalBalance(kit.defaultAccount);
   const CELOBalance = totalBalance.CELO.shiftedBy(-ERC20_DECIMALS).toFixed(2);
-  document.querySelector("#balance").textContent = CELOBalance;
+  balanceElement.textContent = CELOBalance;
 };
 
 const connectCeloWallet = async function () {
@@ -98,26 +103,33 @@ const connectCeloWallet = async function () {
 const getTelevisions = async function () {
   if (contract) {
     notification("⌛ Getting Televisions...");
-    const _televisionLength = await contract.methods.getTelevisionslength().call();
-    const _televisions = [];
-    for (let i = 0; i < _televisionLength; i++) {
-      let _television = new Promise(async (resolve, reject) => {
-        let p = await contract.methods.getTelevision(i).call();
-        resolve({
-          index: i,
-          name: p[0],
-          image: p[1],
-          price: new BigNumber(p[2]),
-          sold: p[3],
-        });
-      });
-      _televisions.push(_television);
+    try {
+      const _televisionLength = await contract.methods.getTelevisionslength().call();
+      const _televisionsPromises = [];
+
+      for (let i = 0; i < _televisionLength; i++) {
+        _televisionsPromises.push(
+          contract.methods.getTelevision(i).call().then(p => ({
+            index: i,
+            name: p[0],
+            image: p[1],
+            price: new BigNumber(p[2]),
+            sold: p[3],
+          }))
+        );
+      }
+
+      const _televisions = await Promise.all(_televisionsPromises);
+      televisions = _televisions;
+
+      showMenu();
+      notificationOff();
+    } catch (error) {
+      notification(`⚠️ ${error}.`);
     }
-    televisions = await Promise.all(_televisions);
-    showMenu();
-    notificationOff();
   }
 };
+
 
 function showMenu() {
   document.getElementById("menu").innerHTML = "";
