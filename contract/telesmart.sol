@@ -39,8 +39,6 @@ contract Television is Ownable {
         uint256 sold;
     }
 
-    // mapping(uint256 => TelevisionInfo) private televisions;
-
 
     /**
      * @dev Emitted when a new television is added to the contract.
@@ -70,9 +68,11 @@ contract Television is Ownable {
         string memory _image,
         uint256 _price
     ) public onlyOwner {
+        require(bytes(_name).length > 0, "Name cannot be empty");
+        require(bytes(_image).length > 0, "Image URL cannot be empty");
         require(_price > 0, "Price must be greater than 0");
+        
         televisions.push(TelevisionInfo(_name, _image, _price, 0));
-
         emit TelevisionAdded(_name, _image, _price);
     }
 
@@ -82,15 +82,21 @@ contract Television is Ownable {
      */
     function placeOrder(Order[] memory _orders) public payable {
         uint256 totalAmount;
-        for (uint256 i = 0; i < _orders.length; i++) {
+       for (uint256 i = 0; i < _orders.length; i++) {
             Order memory _order = _orders[i];
             require(_order.televisionId < televisions.length, "Invalid television ID");
 
-            TelevisionInfo memory _television = televisions[_order.televisionId];
+            TelevisionInfo storage _television = televisions[_order.televisionId];
             require(_television.price > 0, "Television does not exist");
+             // Ensure that the batch size is not greater than the length of _orders
+            uint256 ordersToProcess = batchSize;
+            if (ordersToProcess > _orders.length) {
+                ordersToProcess = _orders.length;
+            }
 
             totalAmount += _television.price * _order.count;
-            _television.sold += _order.count;
+            _television.sold += _order.count; // This line modifies the actual data in the 'televisions' array
+
             emit OrderPlaced(msg.sender, _order.televisionId, _order.count);
         }
         require(totalAmount == msg.value, "Invalid amount sent");
