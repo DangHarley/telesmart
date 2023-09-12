@@ -1,5 +1,3 @@
-// SPDX-License-Identifier: MIT
-
 pragma solidity >=0.7.0 <0.9.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -14,6 +12,8 @@ contract Television is Ownable {
     * @dev Array containing information about different televisions.
     */
     TelevisionInfo[] private televisions;
+
+    uint256 public batchSize; // Declare the batchSize variable here
 
     /**
     * @dev Struct representing an order for televisions.
@@ -82,17 +82,12 @@ contract Television is Ownable {
      */
     function placeOrder(Order[] memory _orders) public payable {
         uint256 totalAmount;
-       for (uint256 i = 0; i < _orders.length; i++) {
+        for (uint256 i = 0; i < _orders.length; i++) {
             Order memory _order = _orders[i];
             require(_order.televisionId < televisions.length, "Invalid television ID");
 
             TelevisionInfo storage _television = televisions[_order.televisionId];
             require(_television.price > 0, "Television does not exist");
-             // Ensure that the batch size is not greater than the length of _orders
-            uint256 ordersToProcess = batchSize;
-            if (ordersToProcess > _orders.length) {
-                ordersToProcess = _orders.length;
-            }
 
             totalAmount += _television.price * _order.count;
             _television.sold += _order.count; // This line modifies the actual data in the 'televisions' array
@@ -102,6 +97,14 @@ contract Television is Ownable {
         require(totalAmount == msg.value, "Invalid amount sent");
         (bool success, ) = owner().call{value: msg.value}("");
         require(success, "Transfer of order amount failed");
+        }
+
+    /**
+     * @dev Set the batch size for processing orders.
+     * @param _batchSize The new batch size.
+     */
+    function setBatchSize(uint256 _batchSize) public onlyOwner {
+        batchSize = _batchSize;
     }
 
 
